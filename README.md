@@ -41,8 +41,8 @@ limiter = FastLimiter(RedisStorage(), limit=5, interval=60)
 
 app = FastAPI()
 
-@app.get("/limited")
-async def limited_endpoint(dependency=Depends(limiter)):
+@app.get("/limited", dependencies=[Depends(limiter)])
+async def limited_endpoint():
     return {"message": "This endpoint is rate limited"}
 ```
 
@@ -51,7 +51,7 @@ async def limited_endpoint(dependency=Depends(limiter)):
 ```python
 from fast_limiter import FastLimiter, fast_limit
 from fast_limiter.storages import RedisStorage  # or SQLiteStorage
-from fastapi import Depends, FastAPI, Request
+from fastapi import FastAPI, Request
 
 limiter = FastLimiter(RedisStorage(), limit=5, interval=60) 
 
