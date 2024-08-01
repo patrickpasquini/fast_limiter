@@ -1,6 +1,7 @@
 import redis.asyncio as aioredis
 import time
 from typing import Optional
+from ..config import env_settings
 from ..exceptions import StorageError
 from .storage import Storage
 
@@ -8,7 +9,7 @@ from .storage import Storage
 class RedisStorage(Storage):
     """Redis storage implementation for the rate limiter."""
 
-    def __init__(self, url: str = "redis://localhost", prefix: str = "rtl"):
+    def __init__(self, url: str = env_settings.redis_url, prefix: str = "rtl"):
         """
         Initializes the Redis storage.
 
