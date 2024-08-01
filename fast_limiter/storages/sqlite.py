@@ -1,6 +1,7 @@
 import time
 from sqlmodel import Field, SQLModel, create_engine, Session
 from typing import Optional
+from ..config import env_settings
 from ..exceptions import StorageError
 from .storage import Storage
 
@@ -14,7 +15,7 @@ class SQLRateLimit(SQLModel, table=True):
 class SQLiteStorage(Storage):
     """SQLite storage implementation for the rate limiter."""
 
-    def __init__(self, db_path: str = "rtl.db"):
+    def __init__(self, db_path: str = env_settings.db_path):
         """
         Initializes the SQLite storage.
 
