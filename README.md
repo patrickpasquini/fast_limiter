@@ -14,6 +14,11 @@ It includes support for Redis and SQLite as storage backends, allowing you to co
 - **Redis Storage**: Scalable, fast, and suitable for production.
 - **SQLite Storage**: Simple and file-based, ideal for testing and development.
 
+### Prerequisites
+
+- Python 3.11+
+- Redis (if using Redis for storage)
+- SQLite (if using SQLite for storage)
 
 ## Getting Started
 
@@ -27,6 +32,17 @@ It includes support for Redis and SQLite as storage backends, allowing you to co
 
     ```bash
     pip install -r requirements.txt
+
+3. **Set up the environment variables**:
+
+    Create a `.env` file in the root directory of the project with the following content:
+
+    ```env
+    REDIS_URL=redis://localhost
+    DB_PATH=rtl.db
+    ```
+
+    The `REDIS_URL` and `DB_PATH` variables can be customized to point to your specific Redis instance or SQLite database file.
 
 ## Usage
 
